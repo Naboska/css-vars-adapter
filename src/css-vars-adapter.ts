@@ -25,18 +25,18 @@ const getVariables = () => {
     .map(runTry(e => e.cssRules))
     .filter(Boolean);
 
-  const names = styleSheets.reduce((acc, cssRules) => {
+  return styleSheets.reduce((vars, cssRules) => {
     if (cssRules.length) Array.from(cssRules as any)
       .forEach(({style}) => {
         if (style) Array.from(style)
-          .forEach((name: string) => name && name.startsWith('--') && !acc.includes(name) && acc.push(name))
+          .forEach((name: string) => {
+            if (name && name.startsWith('--') && !vars[name])
+              vars[name] = getComputedStyle(MAIN_ELEMENT).getPropertyValue(name)
+          })
       })
 
-    return acc;
-  }, [])
-
-
-  //
+    return vars;
+  }, {})
 }
 
 export const setVariables = <T extends TVariables = {}>(values: T, options: TOptions = {}): void => {
@@ -48,7 +48,6 @@ export const setVariables = <T extends TVariables = {}>(values: T, options: TOpt
   if (isReplace) variables.forEach(style => setVariable(...style));
 
 }
-
 
 export default {
   setVariables,
