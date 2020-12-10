@@ -20,7 +20,7 @@ const runTry = <T>(fn: (args: T) => any) => (args: T) => {
   }
 }
 
-const getVariables = () => {
+export const getVariables = () => {
   const styleSheets: TStyleSheet[] = Array.from(document.styleSheets)
     .map(runTry(e => e.cssRules))
     .filter(Boolean);
@@ -48,8 +48,3 @@ export const setVariables = <T extends TVariables = {}>(values: T, options: TOpt
   if (isReplace) variables.forEach(style => setVariable(...style));
 
 }
-
-export default {
-  setVariables,
-  getVariables
-};
