@@ -1,6 +1,6 @@
 {
   "name": "css-vars-adapter",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "license": "MIT",
   "author": {
     "name": "Dmitry Filatov",
@@ -23,25 +23,30 @@
   "files": [
     "dist/"
   ],
+  "scripts": {
+    "build-system": "tsc --outFile \"dist/system.js\" --module \"system\"",
+    "build": "rimraf dist && tsc & yarn build-system",
+    "lint": "eslint \"./**/*.ts\" --fix",
+    "test": "jest"
+  },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "devDependencies": {
+    "@types/jest": "^26.0.19",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
-    "@typescript-eslint/parser": "^4.6.1",
-    "eslint": "^7.13.0",
+    "@typescript-eslint/parser": "^4.9.1",
+    "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-prettier": "^3.1.4",
-    "husky": "^4.3.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "husky": "^4.3.5",
+    "jest": "^26.6.3",
     "lint-staged": "^10.5.3",
-    "prettier": "^2.1.2",
+    "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
+    "ts-jest": "^26.4.4",
     "typescript": "^4.0.5"
-  },
-  "scripts": {
-    "build": "rimraf dist && tsc",
-    "lint": "eslint \"./**/*.ts\" --fix"
   },
   "husky": {
     "hooks": {
@@ -50,7 +55,8 @@
   },
   "lint-staged": {
     "*.ts": [
-      "npm run lint"
+      "yarn lint",
+      "yarn test"
     ]
   }
 }

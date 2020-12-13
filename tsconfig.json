@@ -6,6 +6,7 @@
     "skipLibCheck": true,
     "downlevelIteration": true,
     "lib": ["ESNext", "dom"],
-    "target": "es5"
-  }
+    "target": "es5",
+  },
+  "exclude": ["**/*.test.ts"]
 }
