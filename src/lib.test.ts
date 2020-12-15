@@ -1,4 +1,4 @@
-import { setVariables, getVariables } from './css-vars-adapter';
+import { setVariables, getVariables } from './index';
 
 const __MOCK_THEME__ = {
   colors: {

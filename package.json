@@ -1,6 +1,6 @@
 {
   "name": "css-vars-adapter",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "license": "MIT",
   "author": {
     "name": "Dmitry Filatov",
@@ -24,17 +24,22 @@
     "dist/"
   ],
   "scripts": {
-    "build-system": "tsc --outFile \"dist/system.js\" --module \"system\"",
-    "build": "rimraf dist && tsc & yarn build-system",
+    "build": "yarn clean && yarn build:module && yarn build:system",
+    "build:system": "NODE_ENV=production webpack",
+    "build:module": "tsc",
+    "clean": "rimraf dist",
     "lint": "eslint \"./**/*.ts\" --fix",
     "test": "jest"
   },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
     "@types/jest": "^26.0.19",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.9.1",
+    "babel-loader": "^8.2.2",
     "eslint": "^7.15.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^6.15.0",
@@ -46,7 +51,9 @@
     "prettier": "^2.2.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.0.5"
+    "typescript": "^4.1.3",
+    "webpack": "^5.10.2",
+    "webpack-cli": "^4.2.0"
   },
   "husky": {
     "hooks": {

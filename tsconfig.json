@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "esModuleInterop": true,
+    "baseUrl": "src",
+    "moduleResolution": "node",
+    "target": "es2017",
+    "importsNotUsedAsValues": "error",
     "declaration": true,
+    "isolatedModules": true,
+    "sourceMap": true,
+    "strict": false,
+    "esModuleInterop": true,
     "skipLibCheck": true,
-    "downlevelIteration": true,
-    "lib": ["ESNext", "dom"],
-    "target": "es5",
+    "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["**/*.test.ts"]
+  "include": ["src/**/*"],
+  "exclude": ["**/__tests__/**", "**/*.test.ts"]
 }

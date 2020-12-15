@@ -1,10 +1,5 @@
-import { TVariables, setVariables, getVariables } from './css-vars-adapter';
+import { getVariables } from './get-variables';
+import { setVariables } from './set-variables';
 
-export { setVariables, getVariables };
-
-export type { TVariables };
-
-export default {
-  setVariables,
-  getVariables,
-};
+export { getVariables, setVariables };
+export default { getVariables, setVariables };
