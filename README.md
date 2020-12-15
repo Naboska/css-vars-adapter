@@ -8,7 +8,7 @@
       <img alt="" src="https://badgen.net/bundlephobia/minzip/css-vars-adapter">
     </a>
     <a aria-label="Hist" href="https://www.jsdelivr.com/package/npm/css-vars-adapter">
-      <img alt="" src="https://data.jsdelivr.com/v1/package/npm/css-vars-adapter/badge">
+      <img alt="" src="https://badgen.net/npm/dt/css-vars-adapter">
     </a>
 </p>
 
