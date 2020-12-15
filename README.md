@@ -119,7 +119,7 @@ const globalViriables = getVariables<Record<TValues, string>>();
 
 Use the recommended setting [single-spa-systemjs](https://single-spa.js.org/docs/recommended-setup/#systemjs)
 
-Inside importmap your index.html describe the path to the dependency
+1) Inside importmap your index.html describe the path to the dependency
 
 ```html
 ...
@@ -135,12 +135,53 @@ Inside importmap your index.html describe the path to the dependency
 ...
 ```
 
-Inside your webpack.config.js
-
+2) Inside your webpack.config.js
 
 ```js
 module.exports = {
    externals: ['css-vars-adapter'],
    //...
 }
+```
+
+3) Inside your application, it is advisable to make changes to variables before the first mount.
+
+React:
+```tsx
+import { useLayoutEffect } from 'react';
+import { setVariables } from 'css-vars-adapter';
+
+type TTheme = {
+   colors: {}
+}
+
+export const useGlobalVariables = (theme: TTheme) => {
+   useLayoutEffect(() => {
+      setVariables(theme.colors, { replace: false });
+   })
+}
+```
+
+Vue:
+```vue
+<script lang='ts'>
+import { onBeforeMount, PropType } from 'vue';
+import { setVariables } from 'css-vars-adapter';
+
+type TTheme = {
+  colors: {}
+}
+
+export default {
+  props: {
+    theme: Object as PropType<TTheme>,
+  },
+  setup({ theme }) {
+    onBeforeMount(() => {
+       setVariables(theme.colors, { replace: false });
+    });
+  },
+};
+</script>
+
 ```
