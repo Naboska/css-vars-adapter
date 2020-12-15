@@ -115,7 +115,7 @@ const globalViriables = getVariables<Record<TValues, string>>();
 //    }
 ```
 
-##Microfrontend
+## Microfrontend
 
 Use the recommended setting [single-spa-systemjs](https://single-spa.js.org/docs/recommended-setup/#systemjs)
 
