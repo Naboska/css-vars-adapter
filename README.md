@@ -157,7 +157,7 @@ type TTheme = {
 
 export const useGlobalVariables = (theme: TTheme) => {
    useLayoutEffect(() => {
-      setVariables(theme.colors, { replace: false });
+      setVariables(theme, { replace: false });
    })
 }
 ```
@@ -178,7 +178,7 @@ export default {
   },
   setup({ theme }) {
     onBeforeMount(() => {
-       setVariables(theme.colors, { replace: false });
+       setVariables(theme, { replace: false });
     });
   },
 };
