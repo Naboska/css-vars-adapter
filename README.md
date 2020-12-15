@@ -117,3 +117,30 @@ const globalViriables = getVariables<Record<TValues, string>>();
 
 ##Microfrontend
 
+Use the recommended setting [single-spa-systemjs](https://single-spa.js.org/docs/recommended-setup/#systemjs)
+
+Inside importmap your index.html describe the path to the dependency
+
+```html
+...
+<head>
+   <script type="systemjs-importmap">
+      {
+        "imports": {
+          "css-vars-adapter": "https://unpkg.com/css-vars-adapter/dist/system/css-vars-adapter.production.js",
+        }
+      }
+   </script>
+</head>
+...
+```
+
+Inside your webpack.config.js
+
+
+```js
+module.exports = {
+   externals: ['css-vars-adapter'],
+   //...
+}
+```
