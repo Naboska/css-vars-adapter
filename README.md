@@ -148,7 +148,7 @@ module.exports = {
 
 React:
 
-We give preference to [emotion](https://emotion.sh/) or [styled-components](https://styled-components.com/), then you can use the TempoWider with this approach and do without our library.
+We give preference to [emotion](https://emotion.sh/) or [styled-components](https://styled-components.com/), then you can use the ThemeProvider with this approach and do without our library.
 
 ```tsx
 import React from 'react';
