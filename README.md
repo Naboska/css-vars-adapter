@@ -169,7 +169,9 @@ import { onBeforeMount, PropType } from 'vue';
 import { setVariables } from 'css-vars-adapter';
 
 type TTheme = {
-  colors: {}
+  colors: {
+    primary: '#000000'
+  }
 }
 
 export default {
@@ -183,5 +185,11 @@ export default {
   },
 };
 </script>
+
+<style>
+  .main {
+     background-color: var(--colors-primary);
+  }
+</style>
 
 ```
