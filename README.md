@@ -147,6 +147,24 @@ module.exports = {
 3) Inside your application, it is advisable to make changes to variables before the first mount.
 
 React:
+
+We give preference to [emotion](https://emotion.sh/) or [styled-components](https://styled-components.com/), then you can use the TempoWider with this approach and do without our library.
+
+```tsx
+import React from 'react';
+import { ThemeProvider } from '@emotion/react'
+
+export default function ({ theme }) {
+  return (
+    <ThemeProvider {...{ theme }}>
+       {/* ... */}
+    </ThemeProvider>
+  )
+}
+```
+
+But you can also use our library if you work with css...
+
 ```tsx
 import { useLayoutEffect } from 'react';
 import { setVariables } from 'css-vars-adapter';
